@@ -45,9 +45,21 @@
                 }
             }
         },
+        computed:{
+          pageFrom(){
+              return this.$router.history.current.query.from;
+          }
+        },
         created(){
             Cookies.remove('token');
             this.$store.dispatch('deleteAllTabs');
+        },
+        mounted(){
+          this.$nextTick(function () {
+              if(this.pageFrom){
+                  this.$Message.error('请先登录!');
+              }
+          })
         },
         methods: {
             handleSubmit(name) {
@@ -56,9 +68,8 @@
                         this.$Message.success('登录成功!');
                         Cookies.set('token',this.formInline.user,{ expires: 1 });
 
-                        let from=this.$router.history.current.query.from;
-                        if(from){
-                            this.$router.push({ path: from});
+                        if(this.pageFrom){
+                            this.$router.push({ path: this.pageFrom});
                         }else{
                             this.$router.push({ path: '/base' });
                         }
