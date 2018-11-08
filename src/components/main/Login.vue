@@ -2,7 +2,7 @@
     <div class="grid-wrap">
         <div class="grid"  @keyup.enter="handleSubmit('formInline')">
             <Row type="flex" justify="center">
-                <Col span="6">
+                <Col span="4">
                     <h1 class="login-title">用户登录</h1>
                     <Form ref="formInline" :model="formInline" :rules="ruleInline" >
                         <FormItem prop="user">
@@ -47,6 +47,7 @@
         },
         created(){
             Cookies.remove('token');
+            this.$store.dispatch('deleteAllTabs');
         },
         methods: {
             handleSubmit(name) {
@@ -54,7 +55,13 @@
                     if (valid) {
                         this.$Message.success('登录成功!');
                         Cookies.set('token',this.formInline.user,{ expires: 1 });
-                        this.$router.push({ path: '/base' });
+
+                        let from=this.$router.history.current.query.from;
+                        if(from){
+                            this.$router.push({ path: from});
+                        }else{
+                            this.$router.push({ path: '/base' });
+                        }
                     }
                 })
             }

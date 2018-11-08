@@ -58,6 +58,7 @@ const store = new Vuex.Store({
         },
     },
     actions: {
+        //根据路径查找左侧选中菜单
         findCurrentLeft(context,path){
             let state=context.state;
             setTimeout(function () {
@@ -119,6 +120,15 @@ const store = new Vuex.Store({
                 context.commit('judgeArrow');
                 context.commit('calcTabPosition', state.activeTabIndex);
             }
+        },
+        deleteAllTabs(context){
+            context.state.activeLeftNavIndex=-1;
+            context.state.tabList=[{
+                name:'主页',
+                href:'/',
+                notClose:true
+            }];
+            context.dispatch('changeTabs',0);
         },
         changeTopNav(context,index){
             let state=context.state;
