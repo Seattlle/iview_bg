@@ -5,7 +5,7 @@
                 <img :src="item.url">
                 <div class="demo-upload-list-cover">
                     <Icon type="ios-eye-outline" v-if="preview" @click.native="handleView(index)"></Icon>
-                    <Icon type="ios-trash-outline" v-if="upload.onDel" @click.native="handleRemove(item)"></Icon>
+                    <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
                 </div>
             </template>
             <template v-else>
