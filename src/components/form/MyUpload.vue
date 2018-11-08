@@ -154,7 +154,7 @@
         }
     }
 </script>
-<style>
+<style scoped lang="scss">
     .demo-upload-list{
         display: inline-block;
         width: 60px;
@@ -168,10 +168,16 @@
         position: relative;
         box-shadow: 0 1px 1px rgba(0,0,0,.2);
         margin-right: 4px;
-    }
-    .demo-upload-list img{
-        width: 100%;
-        height: 100%;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        &:hover  .demo-upload-list-cover{
+            display: block;
+        }
+
     }
     .demo-upload-list-cover{
         display: none;
@@ -181,23 +187,22 @@
         left: 0;
         right: 0;
         background: rgba(0,0,0,.6);
-    }
-    .demo-upload-list:hover .demo-upload-list-cover{
-        display: block;
-    }
-    .demo-upload-list-cover i{
-        color: #fff;
-        font-size: 20px;
-        cursor: pointer;
-        margin: 0 2px;
+
+        i{
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 2px;
+        }
     }
 
     .imageMenu{
         text-align:center;
         font-size:18px;
-    }
-    .imageMenu .ivu-icon{
-        margin:0 10px;
-        cursor: pointer;
+        .ivu-icon{
+            margin:0 10px;
+            cursor: pointer;
+        }
+
     }
 </style>

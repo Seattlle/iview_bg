@@ -53,7 +53,7 @@
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         this.$Message.success('登录成功!');
-                        Cookies.set('token',this.formInline.user);
+                        Cookies.set('token',this.formInline.user,{ expires: 1 });
                         this.$router.push({ path: '/base' });
                     }
                 })
