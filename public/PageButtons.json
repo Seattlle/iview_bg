@@ -1,0 +1,18 @@
+{
+  "vos":[{
+    "name":"新增",
+    "icon":"ios-paper",
+    "class":"primary",
+    "handler":"add"
+  },{
+    "name":"修改",
+    "icon":"ios-paper",
+    "class":"info",
+    "handler":"modify"
+  },{
+    "name":"删除",
+    "icon":"ios-paper",
+    "class":"error",
+    "handler":"del"
+  }]
+}
