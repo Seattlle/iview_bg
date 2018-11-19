@@ -2,14 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Cookies from 'js-cookie'
 
-import layout from "../../components/main/Index";
-import login from "../../components/main/Login";
-import index from "../../components/MyIndex";
-import grid from "../../components/MyGrid";
-import talbe from "../../components/MyTable";
-import modify from "../../components/MyModify";
-import tablePage from "../../components/MyTablePage";
-import upload from "../../components/form/MyUpload";
+import layout from "@/components/main/Index";
 
 Vue.use(Router);
 
@@ -19,7 +12,7 @@ const routes=[{
     redirect: '/base'
 },{
     path:'/login',
-    component:login,
+    component:resolve=>require(["@/components/main/Login"],resolve),
     name:'登录',
 },{
     path:'/base',
@@ -27,10 +20,10 @@ const routes=[{
     // name:'基础',
     meta:{login:true},
     children:[
-        { path: '/', name:'主页',component: index },
-        { path: 'grid', name:'栅格',component: grid },
-        { path: 'table', name:'表格', component: talbe },
-        { path: 'modify',name:'弹窗',  component: modify },
+        { path: '/', name:'主页',component: resolve=>require(["@/components/MyIndex"],resolve) },
+        { path: 'grid', name:'栅格',component: resolve=>require(["@/components/MyGrid"],resolve) },
+        { path: 'table', name:'表格', component: resolve=>require(["@/components/MyTable"],resolve) },
+        { path: 'modify',name:'弹窗',  component: resolve=>require(["@/components/MyModify"],resolve) },
     ]
 },{
     path:'/other',
@@ -38,8 +31,8 @@ const routes=[{
     name:'高阶',
     meta:{login:true},
     children:[
-        { path: 'tablePage', name:'数据表格页', component: tablePage },
-        { path: 'upload', name:'上传', component: upload }
+        { path: 'tablePage', name:'数据表格页', component: resolve=>require(["@/components/MyTablePage"],resolve) },
+        { path: 'upload', name:'上传', component: resolve=>require(["@/components/form/MyUpload"],resolve) }
     ]
 }];
 
