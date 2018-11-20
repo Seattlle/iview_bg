@@ -2,7 +2,7 @@
     <div class="grid-wrap">
         <div class="grid"  @keyup.enter="handleSubmit('formInline')">
             <Row type="flex" justify="center">
-                <Col span="4">
+                <Col  :xs="12" :sm="8" :md="6" :lg="4">
                     <h1 class="login-title">用户登录</h1>
                     <Form ref="formInline" :model="formInline" :rules="ruleInline" >
                         <FormItem prop="user">

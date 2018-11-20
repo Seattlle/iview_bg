@@ -35,8 +35,7 @@ const routes=[{
         { path: 'upload', name:'上传', component: resolve=>require(["@/components/form/MyUpload"],resolve) }
     ]
 }];
-
-export const router= new Router({
+let router= new Router({
     routes
 });
 router.beforeEach((to, from, next) => {
@@ -45,9 +44,11 @@ router.beforeEach((to, from, next) => {
         if(Cookies.get('token')){
             next()
         }else{
-            next({path:'/login'})
+            next({path:'/login',query: { from: to.path }})
         }
     }else{
         next();
     }
 });
+
+export default router;

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {router} from '../router/index';
-
+import router from '../router/index';
+import ajax from '../ajax/index';
 
 Vue.use(Vuex);
 
@@ -139,9 +139,9 @@ const store = new Vuex.Store({
             context.dispatch('findCurrentLeft',router.history.current.path);
         },
         getTopNav(context){
-            Vue.axios.get('TopMenu.json')
+            ajax.get('TopMenu.json')
                 .then(function (response) {
-                    context.state.topNav=response.data.vos;
+                    context.state.topNav=response.vos;
 
                     let menu=router.history.current
                         ,obj={}

@@ -180,7 +180,7 @@
                         formdata.append(item,this.upload.data[item]);
                     }
 
-                    this.axios.post(
+                    this.ajax.post(
                         this.upload.action
                         , formdata)
                         .then(function (response) {

@@ -98,7 +98,7 @@
             },
             //获取表格按钮
             getButtons(){
-                this.axios.get(this.button).then(res=>this.buttons=res.data.vos);
+                this.ajax.get(this.button).then(res=>this.buttons=res.vos);
             },
             //获取表格数据
             getTableData(){
@@ -110,11 +110,11 @@
                 this.loading=true;
 
                 if(this.table.url){
-                    this.axios.get(this.table.url,{
+                    this.ajax.get(this.table.url,{
                         params: this.condition
                     }).then(function (res) {
-                        Vue.set(_this.table,'data',res.data.vos);
-                        Vue.set(_this.page,'total',res.data.total);
+                        Vue.set(_this.table,'data',res.vos);
+                        Vue.set(_this.page,'total',res.total);
                         _this.loading=false;
                     });
                 }

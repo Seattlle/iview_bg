@@ -118,8 +118,8 @@
                     let item=this.items[i];
 
                     if(item.type==='select' && (!item.data||item.data.length===0) && item.options){
-                        this.axios.get(item.options.url).then(function (res) {
-                            let _rows=res.data.vos
+                        this.ajax.get(item.options.url).then(function (res) {
+                            let _rows=res.vos
                                 ,data=[]
                                 ,name=item.options.labelField ||'label'
                                 ,value=item.options.valueField ||'value';
